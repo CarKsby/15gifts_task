@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "15gifts-task"
+version = "0.1.0"
+description = ""
+authors = ["carter brooksby <carterbrooksby@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "fifteen_gifts_task", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pydantic = "^2.11.5"
+datamodel-code-generator = "^0.30.2"
+sqlalchemy = "^2.0.41"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+flake8 = "^7.2.0"
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
