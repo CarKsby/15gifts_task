@@ -11,7 +11,7 @@ class HandsetsTable(Base):
     brand = Column(String, nullable=False)
     code = Column(String, unique=True, nullable=False)
     name = Column(String, nullable=False)
-    averageRating = Column(Integer)  # Assuming rating is stored as an integer
+    averageRating = Column(Integer) 
     totalReviews = Column(Integer)
     inStock = Column(Integer)
     isFiveGReady = Column(Integer)
