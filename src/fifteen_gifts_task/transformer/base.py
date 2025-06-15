@@ -48,22 +48,3 @@ class Transformer(ABC):
         :return: A dictionary of transformed models
         """
         return self.transformed_models_list
-
-
-class Transformers:
-    """
-    Aggregator class that acts upon an array of Transformer classes
-    """
-
-    def __init__(self, transformers: List[Transformer]):
-        self.transformers = transformers
-
-    def transform(self) -> Dict[str, BaseModel]:
-        """
-        Transform the data object using all transformers
-        :param data_obj: The extracted data object
-        :return: A dictionary of transformed models
-        """
-        for transformer in self.transformers:
-            transformer.transform()
-        return
