@@ -6,6 +6,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class HandsetTariffTransformer(Transformer):
     """
     Transformer class for transforming handset tariff data into PyDantic models
@@ -23,10 +24,7 @@ class HandsetTariffTransformer(Transformer):
         tariff_list = data["tariffCardDetails"]["tariffCards"]
         for tariff in tariff_list:
             if self.is_valid_for_recommendation(tariff):
-                tariff_model = Tariff(
-                    **tariff,
-                    api=self.extract_api(tariff)
-                )
+                tariff_model = Tariff(**tariff, api=self.extract_api(tariff))
                 self.transformed_models_list.append(tariff_model)
 
     def is_valid_for_recommendation(self, data: Dict[str, any]) -> bool:
@@ -43,7 +41,7 @@ class HandsetTariffTransformer(Transformer):
         :return: None
         """
         return float(api_mapping["apiPriceDetails"]["price"][1:])
-    
+
     def set_table_models(self) -> None:
         """
         Convert Tariff model to TariffPlan table model
@@ -59,10 +57,10 @@ class HandsetTariffTransformer(Transformer):
                     airtimeMrc=tariff_model.airtimeMrc,
                     deviceMrc=tariff_model.deviceMrc,
                     api=tariff_model.api,
-                    contractDuration=tariff_model.contractDuration,
+                    contractDurationMonths=tariff_model.contractDuration,
                 )
             )
-    
+
     def get_table_models(self) -> List:
         """
         Get the transformed table models

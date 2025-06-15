@@ -21,7 +21,6 @@ class BaseLoader(ABC):
         Base.metadata.create_all(self.engine)
 
 
-
 class Loader(BaseLoader):
     """
     Loader class for persisting data into a database
@@ -41,10 +40,6 @@ class Loader(BaseLoader):
             session.rollback()
             logging.error(f"Error loading handsets: {e}")
         return
-    
+
     def get_session(self):
         return self.session()
-
-        
-
-    

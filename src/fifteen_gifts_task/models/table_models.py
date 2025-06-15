@@ -13,9 +13,9 @@ class HandsetsTable(Base):
     name = Column(String, nullable=False)
     averageRating = Column(Integer)  # Assuming rating is stored as an integer
     totalReviews = Column(Integer)
-    inStock = Column(Integer)  
-    isFiveGReady = Column(Integer)  
-    isSwitchUpEligible = Column(Integer)  
+    inStock = Column(Integer)
+    isFiveGReady = Column(Integer)
+    isSwitchUpEligible = Column(Integer)
     skuCode = Column(String, unique=True)
 
     handsetColours = relationship(
@@ -32,7 +32,7 @@ class HandsetColourTable(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     hexCode = Column(String)
-    handset_id = Column(Integer, ForeignKey("handsets.id"))
+    handsetId = Column(Integer, ForeignKey("handsets.id"))
 
     handsets = relationship("HandsetsTable", back_populates="handsetColours")
 
@@ -44,10 +44,10 @@ class TariffPlanTable(Base):
     planOfferingCode = Column(String, nullable=False)
     name = Column(String, nullable=False)
     totalUpfront = Column(Float, nullable=False)
-    airtimeMrc = Column(Float, nullable=False) 
-    deviceMrc = Column(Float, nullable=False)  
-    api = Column(Float, nullable=False) 
-    contractDuration = Column(Integer, nullable=False) 
-    handset_id = Column(Integer, ForeignKey("handsets.id"))
+    airtimeMrc = Column(Float, nullable=False)
+    deviceMrc = Column(Float, nullable=False)
+    api = Column(Float, nullable=False)
+    contractDurationMonths = Column(Integer, nullable=False)
+    handsetId = Column(Integer, ForeignKey("handsets.id"))
 
     handsets = relationship("HandsetsTable", back_populates="handsetTariffs")

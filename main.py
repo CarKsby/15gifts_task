@@ -11,7 +11,7 @@ import sqlite3
 import logging
 
 logging.basicConfig(level=logging.INFO)
-logging.getLogger('sqlalchemy').setLevel(logging.ERROR)
+logging.getLogger("sqlalchemy").setLevel(logging.ERROR)
 
 if __name__ == "__main__":
 
@@ -29,7 +29,6 @@ if __name__ == "__main__":
         handset_tariff_transformer.transform()
         handset_colour_transformer.transform()
 
-
         handset_tariff_transformer.set_table_models()
         tariff_table_models = handset_tariff_transformer.get_table_models()
 
@@ -42,11 +41,6 @@ if __name__ == "__main__":
         handset_table_model.handsetColours = colour_table_models
         handset_table_model.handsetTariffs = tariff_table_models
         loader.load_handsets(handset_table_model)
-
-    
-    
-
-
 
     db_path = "o2_inventory.sqlite3"
 

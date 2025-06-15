@@ -5,7 +5,10 @@
 from __future__ import annotations
 
 
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator, ValidationError
+import logging
+
+logging.getLogger(__name__)
 
 
 class Handset(BaseModel):
@@ -18,6 +21,18 @@ class Handset(BaseModel):
     isFiveGReady: bool
     isSwitchUpEligible: bool
     skuCode: str
+
+    @field_validator("averageRating", mode="before")
+    @classmethod
+    def validate_average_rating(cls, v):
+        try:
+            v = float(v)
+        except Exception as err:
+            logging.error(err)
+        if not (0 <= v <= 5):
+            raise ValueError("averageRating can't be negative, or above 5!")
+        return v
+
 
 class HandsetColour(BaseModel):
     name: str
@@ -42,3 +57,25 @@ class Tariff(BaseModel):
     api: float
     contractDuration: int
 
+    @field_validator("deviceMrc", "api", "airtimeMrc", "totalUpfront", mode="before")
+    @classmethod
+    def validate_positive_money_value(cls, v: float):
+        try:
+            v = float(v)
+            if v < 0:
+                raise ValueError("Invalid monetary field, it can't be negative")
+        except Exception as err:
+            logging.error(err)
+        return v
+
+    @field_validator("contractDuration", mode="before")
+    @classmethod
+    def validate_positive_int_value(cls, v: int):
+        try:
+            v = int(v)
+            if v < 0:
+                raise ValueError("Invalid field, numeric value can't be negative")
+        except Exception as err:
+            logging.error(err)
+
+        return v

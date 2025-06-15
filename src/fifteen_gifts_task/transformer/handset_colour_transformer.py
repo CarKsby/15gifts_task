@@ -2,6 +2,9 @@ from fifteen_gifts_task.transformer.base import Transformer
 from fifteen_gifts_task.models.data_models import HandsetColour
 from fifteen_gifts_task.models.table_models import HandsetColourTable
 from typing import Dict, List
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class HandsetColourTransformer(Transformer):
@@ -37,7 +40,6 @@ class HandsetColourTransformer(Transformer):
             and colour_data["isAvailable"] == True
         )
 
-
     def set_table_models(self) -> None:
         """
         Convert HandsetColour model to HandsetColour table model
@@ -48,7 +50,7 @@ class HandsetColourTransformer(Transformer):
             for colour_model in self.transformed_models_list
         ]
         return
-    
+
     def get_table_models(self) -> List[HandsetColourTable]:
         """
         Get the table models for HandsetColour

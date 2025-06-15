@@ -2,9 +2,10 @@ from fifteen_gifts_task.transformer.base import Transformer
 from fifteen_gifts_task.models.data_models import Handset
 from typing import List
 
-from fifteen_gifts_task.models.table_models import (
-    HandsetsTable
-)
+from fifteen_gifts_task.models.table_models import HandsetsTable
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class HandsetTransformer(Transformer):
@@ -23,9 +24,7 @@ class HandsetTransformer(Transformer):
         """
         data = self.get_raw_data()
         if self.is_valid_for_recommendation(data):
-            handset_model = Handset(
-                **data
-            )
+            handset_model = Handset(**data)
 
             self.transformed_models_list = [handset_model]
 
@@ -69,7 +68,7 @@ class HandsetTransformer(Transformer):
         )
         self.table_models = [handset_table]
 
-    def get_table_models(self) -> List[HandsetsTable]:          
+    def get_table_models(self) -> List[HandsetsTable]:
         """
         Get the table models for Handsets
         :return: List of HandsetsTable models
