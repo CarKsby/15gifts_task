@@ -1,18 +1,9 @@
 from fifteen_gifts_task.transformer.base import Transformer
 from fifteen_gifts_task.models.data_models import Handset
-from fifteen_gifts_task.transformer.handset_colour_transformer import (
-    HandsetColourTransformer,
-)
-from fifteen_gifts_task.transformer.handset_tariff_transformer import (
-    HandsetTariffTransformer,
-)
 from typing import List
 
 from fifteen_gifts_task.models.table_models import (
-    HandsetsTable,
-    HandsetColourTable,
-    TariffPlanTable,
-    ExtraOffersTable,
+    HandsetsTable
 )
 
 

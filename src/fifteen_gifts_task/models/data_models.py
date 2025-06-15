@@ -4,7 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, field_validator
 
@@ -42,12 +41,4 @@ class Tariff(BaseModel):
     deviceMrc: float
     api: float
     contractDuration: int
-    tariffExtras: list[Extras]
 
-
-class Extras(BaseModel):
-    name: str
-    code: str
-
-    def __hash__(self):
-        return hash((self.code,))
