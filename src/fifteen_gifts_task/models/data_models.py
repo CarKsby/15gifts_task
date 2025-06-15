@@ -24,7 +24,7 @@ class Handset(BaseModel):
 
     @field_validator("averageRating", mode="before")
     @classmethod
-    def validate_average_rating(cls, v):
+    def validate_average_rating(cls, v: float) -> float:
         try:
             v = float(v)
         except Exception as err:
@@ -40,7 +40,7 @@ class HandsetColour(BaseModel):
 
     @field_validator("hexCode", mode="before")
     @classmethod
-    def validate_hex_color(cls, v):
+    def validate_hex_color(cls, v: str) -> str:
         import re
 
         if not re.fullmatch(r"#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})", v):
@@ -59,7 +59,7 @@ class Tariff(BaseModel):
 
     @field_validator("deviceMrc", "api", "airtimeMrc", "totalUpfront", mode="before")
     @classmethod
-    def validate_positive_money_value(cls, v: float):
+    def validate_positive_money_value(cls, v: float) -> float:
         try:
             v = float(v)
             if v < 0:
@@ -70,7 +70,7 @@ class Tariff(BaseModel):
 
     @field_validator("contractDuration", mode="before")
     @classmethod
-    def validate_positive_int_value(cls, v: int):
+    def validate_positive_int_value(cls, v: int) -> int:
         try:
             v = int(v)
             if v < 0:

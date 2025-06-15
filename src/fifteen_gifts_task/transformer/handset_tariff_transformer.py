@@ -12,7 +12,7 @@ class HandsetTariffTransformer(Transformer):
     Transformer class for transforming handset tariff data into PyDantic models
     """
 
-    def __init__(self, raw_data: Dict[str, any]):
+    def __init__(self, raw_data: Dict[str, any]) -> None:
         super().__init__(raw_data)
 
     def transform(self) -> None:

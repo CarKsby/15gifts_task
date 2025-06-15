@@ -10,7 +10,7 @@ class Extractor(ABC):
     Base class for various extraction methods from different data sources to Python objects
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.data_obj = None
 
     @abstractmethod

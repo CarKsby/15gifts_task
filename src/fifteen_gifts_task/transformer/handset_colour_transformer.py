@@ -12,7 +12,7 @@ class HandsetColourTransformer(Transformer):
     Transformer class for transforming colour data into PyDantic models
     """
 
-    def __init__(self, raw_data: Dict[str, any]):
+    def __init__(self, raw_data: Dict[str, any]) -> None:
         super().__init__(raw_data)
 
     def transform(self) -> None:
@@ -29,7 +29,7 @@ class HandsetColourTransformer(Transformer):
 
         return
 
-    def is_valid_for_recommendation(self, colour_data) -> bool:
+    def is_valid_for_recommendation(self, colour_data: dict) -> bool:
         """
         Check if the data is valid for recommendation
         :return: True if valid, False otherwise

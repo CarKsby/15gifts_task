@@ -13,7 +13,7 @@ class HandsetTransformer(Transformer):
     Transformer class for transforming handset data into PyDantic models
     """
 
-    def __init__(self, raw_data: dict):
+    def __init__(self, raw_data: dict) -> None:
         super().__init__(raw_data)
 
     def transform(self: dict) -> None:
@@ -28,7 +28,7 @@ class HandsetTransformer(Transformer):
 
             self.transformed_models_list = [handset_model]
 
-    def is_valid_for_recommendation(self, data) -> bool:
+    def is_valid_for_recommendation(self: dict, data) -> bool:
         """
         Check if the data is valid for recommendation
         :return: True if valid, False otherwise
@@ -47,7 +47,7 @@ class HandsetTransformer(Transformer):
             data["isDataOnly"] == False and data["isDiscontinuedDevice"] == False
         )
 
-    def set_table_models(self):
+    def set_table_models(self: dict) -> None:
         """
         Convert Handset model to Handsets table model
         :param handset_model: The Handset model to convert
@@ -68,7 +68,7 @@ class HandsetTransformer(Transformer):
         )
         self.table_models = [handset_table]
 
-    def get_table_models(self) -> List[HandsetsTable]:
+    def get_table_models(self: dict) -> List[HandsetsTable]:
         """
         Get the table models for Handsets
         :return: List of HandsetsTable models
