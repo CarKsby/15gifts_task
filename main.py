@@ -10,7 +10,8 @@ from fifteen_gifts_task.loader import Loader
 import sqlite3
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
+logging.getLogger('sqlalchemy').setLevel(logging.ERROR)
 
 if __name__ == "__main__":
 
