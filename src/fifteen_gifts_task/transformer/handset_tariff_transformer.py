@@ -20,7 +20,6 @@ class HandsetTariffTransformer(Transformer):
         :return: None
         """
         data = self.get_raw_data()
-        logging.debug(data["tariffCardDetails"])
         tariff_list = data["tariffCardDetails"]["tariffCards"]
         for tariff in tariff_list:
             if self.is_valid_for_recommendation(tariff):
